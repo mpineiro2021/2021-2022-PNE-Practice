@@ -7,7 +7,7 @@ def fib(n):
         return n2
     else:
 
-        for i in range(2,n + 1): #range es para iterar hasta un número de veces determinado
+        for i in range(2,n ): #range es para iterar hasta un número de veces determinado
             num = n1 + n2
             n1 = n2
             n2 = num
