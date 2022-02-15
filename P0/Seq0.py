@@ -22,8 +22,11 @@ def seq_read_fasta(filename):
 
 def seq_len(seq):
     list_genes = ["U5", "FRAT1", "ADA","FXN","RNU6_269P"]
+    list_number = []
     for l in list_genes:
-        number = len(seq(l+".txt"))
+        list_number= list_number.append(len(seq_read_fasta(l+".txt")))
 
-    return number
+    return list_number
+
+def seq_count_base(seq, base):
 
