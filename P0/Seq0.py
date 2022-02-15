@@ -2,8 +2,11 @@ def seq_ping():
     print("Ok")
 def valid_filename():
     exit = False
+    FOLDER = "./sequences/"
     while not exit:
-        filename = input("What file do you wnat to open: ")
+        filename = input("Which file do you want to open: ")
+        filename = FOLDER + filename
+
         try:
             f = open(filename, "r")
             exit = True
@@ -12,18 +15,15 @@ def valid_filename():
             print("File doesn't exist")
 
 def seq_read_fasta(filename):
+
     seq = open(filename, "r").read()
     seq = seq[seq.find("\n"):].replace("\n","")
     return seq
 
 def seq_len(seq):
-'''gene = input("Choose a gene")
-f= open(FOLDER+ gene+".txt")
-print(f.read())'''
+    list_genes = ["U5", "FRAT1", "ADA","FXN","RNU6_269P"]
+    for l in list_genes:
+        number = len(seq(l+".txt"))
 
-FOLDER = "./sequences/"
-list_genes = ["U5", "FRAT1", "ADA","FXN","RNU6_269P"]
-number = []
-for l in list_genes:
-    number = number.append(len(Seq0.seq_read_fasta(FOLDER+l+".txt")))
     return number
+
