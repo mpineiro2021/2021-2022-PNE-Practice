@@ -1,6 +1,11 @@
 import Seq0
-number = Seq0.seq_len(seq)
-print(number)
+Seq0.seq_read_fasta(filename)
+length = Seq0.seq_len(seq)
+print("Gene",length[1])
+print("Gene",length[2])
+print("Gene",length[3])
+print("Gene",length[4])
+print("Gene",length[5])
 
 
 

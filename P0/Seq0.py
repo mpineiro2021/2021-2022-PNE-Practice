@@ -25,8 +25,6 @@ def seq_len(seq):
     list_number = []
     for l in list_genes:
         list_number= list_number.append(len(seq_read_fasta(l+".txt")))
-
-    return list_number
-
-def seq_count_base(seq, base):
+    zip_list = list(zip(list_genes,list_number))
+    return zip_list
 
