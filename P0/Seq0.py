@@ -20,11 +20,13 @@ def seq_read_fasta(filename):
     seq = seq[seq.find("\n"):].replace("\n","")
     return seq
 
-def seq_len(seq):
+def create_zip_list():
+
+    FOLDER = "./sequences/"
     list_genes = ["U5", "FRAT1", "ADA","FXN","RNU6_269P"]
     list_number = []
     for l in list_genes:
-        list_number= list_number.append(len(seq_read_fasta(l+".txt")))
+        list_number.append(len(seq_read_fasta(FOLDER+l+".txt")))
     zip_list = list(zip(list_genes,list_number))
+    print(zip_list)
     return zip_list
-
