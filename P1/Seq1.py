@@ -41,7 +41,38 @@ class Seq:
 
         # -- We just return the string with the sequence
         return self.strbases
-
     def len(self):
-        """Calculate the length of the sequence"""
-        return len(self.strbases)
+        len_bases = []
+        if self.validate_sequence():
+            len_bases.append(len(self.strbases))
+        else:
+            len_bases.append(0)
+        return len_bases
+    def count_base(self):
+        count_a = 0
+        count_c = 0
+        count_g = 0
+        count_t = 0
+        bases_list = ["A","C","G","T"]
+        number_list = []
+        if self.validate_sequence():
+            for s in self.strbases:
+                if s == "A":
+                    count_a += 1
+                elif s == "C":
+                    count_c += 1
+                elif s == "G":
+                    count_g += 1
+                elif s == "T":
+                    count_t += 1
+        else:
+            count_a = 0
+            count_c = 0
+            count_g = 0
+            count_t = 0
+        number_list.append(count_a)
+        number_list.append(count_c)
+        number_list.append(count_g)
+        number_list.append(count_t)
+        num_letter = dict(zip(bases_list,number_list))
+        return num_letter
