@@ -83,6 +83,7 @@ class Seq:
             for keys in d.keys():
                 d[keys] = self.strbases.count(keys)
             return d
+
     def reverse(self):
         if self.strbases == "NULL" or self.strbases == "Error":
             rev = self.strbases
@@ -90,6 +91,25 @@ class Seq:
         else:
             rev = self.strbases[::-1]
             return rev
+
+    def complement(self):
+        comp = ""
+        if self.strbases == "NULL" or self.strbases == "Error":
+            comp = self.strbases
+            return comp
+        else:
+            for i in self.strbases:
+                if i == "A":
+                    comp += "T"
+                elif i == "T":
+                    comp += "A"
+                elif i == "C":
+                    comp += "G"
+                elif i == "G":
+                    comp += "C"
+            return comp
+
+    def read_fasta():
 
 
 
