@@ -109,7 +109,22 @@ class Seq:
                     comp += "C"
             return comp
 
-    def read_fasta():
+    def valid_filename(self):
+        exit = False
+        while not exit:
+            filename = input("Which file do you want to open: ")
+            try:
+                f = open(filename, "r")
+                exit = True
+                return filename
+            except FileNotFoundError:
+                print("File doesn't exist")
+
+    def seq_read_fasta(self):
+
+        seq = open(self.valid_filename(), "r").read()
+        seq = seq[seq.find("\n"):].replace("\n", "")
+        return seq
 
 
 
