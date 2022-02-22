@@ -76,11 +76,20 @@ class Seq:
         return count_a, count_c, count_g, count_t
 
     def count(self):
-        bases_list = ["A","C","G","T"]
-        number_list = []
-        number_list.append(self.count_base())
-        #number_list.append(count_c)
-        #number_list.append(count_g)
-        #number_list.append(count_t)
-        num_letter = dict(zip(bases_list,number_list))
-        return num_letter
+        d = {"A": 0,"C": 0,"G": 0,"T": 0}
+        if self.strbases == "NULL" or self.strbases == "Error":
+            return d
+        else:
+            for keys in d.keys():
+                d[keys] = self.strbases.count(keys)
+            return d
+    def reverse(self):
+        if self.strbases == "NULL" or self.strbases == "Error":
+            rev = self.strbases
+            return rev
+        else:
+            rev = self.strbases[::-1]
+            return rev
+
+
+
