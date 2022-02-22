@@ -6,7 +6,7 @@ s3 = Seq("Invalid sequence")
 
 print("----| Exercise 6 |------")
 print("Sequence 1: (length:", str(s1.len())+")",s1)
-print("Bases:",s1.count_base())
+print("Bases:",s1.count())
 print("Sequence 2: (length:", str(s2.len())+")", s2)
 print("Bases:",s2.count_base())
 print("Sequence 2: (length:", str(s3.len())+")", s3)
