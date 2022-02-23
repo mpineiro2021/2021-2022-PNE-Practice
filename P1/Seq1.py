@@ -56,8 +56,6 @@ class Seq:
         count_c = 0
         count_g = 0
         count_t = 0
-        #bases_list = ["A","C","G","T"]
-        #number_list = []
         if self.validate_sequence():
             for s in self.strbases:
                 if s == "A":
