@@ -47,14 +47,41 @@ def seq_count_base():
 def seq_count():
     FOLDER = "./sequences/"
     list_genes = ["U5", "FRAT1", "ADA","FXN","RNU6_269P"]
-    d = {"A": 0, "C": 0, "G": 0, "T": 0}
     dict_list = []
     for l in list_genes:
+        d = {"A": 0, "C": 0, "G": 0, "T": 0}
         for keys in d.keys():
             d[keys] = (seq_read_fasta(FOLDER + l + ".txt")).count(keys)
         dict_list.append(d)
+    return dict_list,list_genes
 
-        return dict_list,list_genes
+def seq_reverse():
+    FOLDER = "./sequences/"
+    frag = (seq_read_fasta(FOLDER +"U5.txt"))
+    rev = (seq_read_fasta(FOLDER + "U5.txt"))[::-1]
+    return frag[:20],rev[:20]
+
+def seq_complement():
+    d = {"A": "T", "C": "G", "G": "C", "T": "A"}
+    FOLDER = "./sequences/"
+    sequence = (seq_read_fasta(FOLDER +"U5.txt"))[:20]
+    bases = list(sequence)
+    bases = [d[base] for base in bases]
+    return sequence, ''.join(bases)
+
+def max_V(dict_list):
+    value_list= []
+    i = 0
+    while i < len(dict_list):
+        for d in dict_list[i]:
+            max_key = max(d, key=d.get)
+        value_list.append(max_key)
+        i += 1
+    return value_list
+
+
+
+
 
 
 
