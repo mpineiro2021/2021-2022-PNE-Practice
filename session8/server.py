@@ -27,7 +27,7 @@ try:
 
         # Print the conection number
         print("CONNECTION: {}. From the IP: {}".format(number_con, address))
-
+#bind to make the socket as a passive socket for connection, 1 socket nedds to be listening
         # Read the message from the client, if any
         msg = clientsocket.recv(2048).decode("utf-8")
         print("Message from client: {}".format(msg))

@@ -14,6 +14,7 @@ class Client:
         return "Connection to SERVER at " +str(self.ip) + "PORT: " + str(self.port)
 
     def talk(self, msg):
+#we use the socket using the connect. WE NEVER HAVE BIND FUNCTION ON A CLIENT it won't work
 
         # -- Create the socket
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
