@@ -1,19 +1,10 @@
 from Seq1 import Seq
-s1 = Seq()
-s2 = Seq("ACTGA")
+from Seq1 import Seq
 
-s3 = Seq("Invalid sequence")
-
-print("----| Exercise 8 |------")
-print("Sequence 1: (length:", str(s1.len())+")",s1)
-print("Bases:",s1.count())
-print("rev:",s1.reverse())
-print("comp:",s1.complement())
-print("Sequence 2: (length:", str(s2.len())+")", s2)
-print("Bases:",s2.count())
-print("rev:",s2.reverse())
-print("comp:",s2.complement())
-print("Sequence 2: (length:", str(s3.len())+")", s3)
-print("Bases:",s3.count())
-print("rev:",s3.reverse())
-print("comp:",s3.complement())
+print("----| Exercise 8|------")
+seq_list = [Seq(), Seq("ACTGA"), Seq("Invalid sequence") ]
+for index, seq in enumerate(seq_list):
+    print(f"Sequence{index}: (Length: {seq.len()}) {seq}")
+    print(f"\tBases: {seq.count()}")
+    print(f"\tRev: {seq.reverse()}")
+    print(f"\tComp: {seq.complement()}")

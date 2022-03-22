@@ -1,127 +1,72 @@
 class Seq:
-    """A class for representing sequences"""
-
-    def __init__(self, strbases="NULL"):#no se retorna nada en la init function
-
-        # Initialize the sequence with the value
-        # passed as argument when creating the object
-        self.strbases = strbases
-        if strbases =="NULL":
-            print("NULL Seq created")
-        elif not self.validate_sequence():
-            self.strbases = "Error"
-            print("INVALID Seq!")
-        else:
-            print("New sequence created!")
-
+    BASES_ALLOWED = ["A", "C", "G", "T"]
+    COMPLEMENTS = {"A": "T", "C": "G", "G": "C", "T": "A"}
     @staticmethod
-    def validate_sequence2(sequence):
-        valid = True
+    def validate_sequence(bases):
+        valid = len(bases) != 0
         i = 0
-        while i < len(sequence) and valid:
-            c = sequence[i]
-            if c != "A" and c != "C" and c != "G" and c != "T":
+        while i < len(bases) and valid:
+            if bases[i] not in Seq.BASES_ALLOWED:
                 valid = False
             i += 1
         return valid
 
+    def __init__(self, bases="NULL"):#no se retorna nada en la init functio
 
-    def validate_sequence(self):
-        valid = True
-        i = 0
-        while i < len(self.strbases) and valid:
-            c = self.strbases[i]
-            if c != "A" and c != "C" and c != "G" and c != "T":
-                valid = False
-            i += 1
-        return valid
+        if bases =="NULL":
+            self.bases = bases
+            print("NULL Sequence created!")
+        elif Seq.validate_sequence(bases):
+            self.bases = bases
+            print("New sequence created!")
+        else:
+            self.bases = 'ERROR'
+            print("INVALID sequence detected!")
+
 
     def __str__(self):
-        """Method called when the object is being printed"""
+        return self.bases
 
-        # -- We just return the string with the sequence
-        return self.strbases
     def len(self):
-        #len_bases = []
-        if self.validate_sequence():
-            return len(self.strbases)
-
-            #len_bases.append(len(self.strbases))
-        else:
+        if self.bases == "NULL" or self.bases == "ERROR":
             return 0
-            #len_bases.append(0)
-        #return len_bases
-    def count_base(self):
-        count_a = 0
-        count_c = 0
-        count_g = 0
-        count_t = 0
-        if self.validate_sequence():
-            for s in self.strbases:
-                if s == "A":
-                    count_a += 1
-                elif s == "C":
-                    count_c += 1
-                elif s == "G":
-                    count_g += 1
-                elif s == "T":
-                    count_t += 1
-        else:
-            count_a = 0
-            count_c = 0
-            count_g = 0
-            count_t = 0
-        return count_a, count_c, count_g, count_t
+        return len(self.bases)
+
+    def count_base(self, base):
+        if self.bases == "NULL" or  self.bases == "ERROR":
+            return 0
+        return self.bases.count(base)
 
     def count(self):
-        d = {"A": 0,"C": 0,"G": 0,"T": 0}
-        if self.strbases == "NULL" or self.strbases == "Error":
-            return d
-        else:
-            for keys in d.keys():
-                d[keys] = self.strbases.count(keys)
-            return d
+        d = {}
+        for base in Seq.BASES_ALLOWED:
+            d[base] = self.count_base(base)
+        return d
 
     def reverse(self):
-        if self.strbases == "NULL" or self.strbases == "Error":
-            rev = self.strbases
-            return rev
-        else:
-            rev = self.strbases[::-1]
-            return rev
+        if self.bases == "NULL" or self.bases == "ERROR":
+            return self.bases
+        return self.bases[::-1]
+
 
     def complement(self):
+        if self.bases == "NULL" or self.bases == "ERROR":
+            return self.bases
         comp = ""
-        if self.strbases == "NULL" or self.strbases == "Error":
-            comp = self.strbases
-            return comp
-        else:
-            for i in self.strbases:
-                if i == "A":
-                    comp += "T"
-                elif i == "T":
-                    comp += "A"
-                elif i == "C":
-                    comp += "G"
-                elif i == "G":
-                    comp += "C"
-            return comp
+        for base in self.bases:
+            comp += Seq.COMPLEMENTS[base]
+        return comp
 
-    def valid_filename(self):
-        exit = False
-        while not exit:
-            filename = input("Which file do you want to open: ")
-            try:
-                f = open(filename, "r")
-                exit = True
-                return filename
-            except FileNotFoundError:
-                print("File doesn't exist")
 
     def seq_read_fasta(self, filename):
+        from pathlib import Path
+        file_contents = Path(filename).read_text()
+        lines = file_contents.splitlines()
+        body = lines[1:]
+        self.bases = ""
+        for line in body:
+            self.bases += line
 
-        f = open("./sequences/"+filename+".txt", "r").read()
-        self.strbases = f[f.find("\n"):].replace("\n","")
 
 
 
