@@ -11,6 +11,7 @@ print(f"-----| Practice {PRACTICE}, Exercise {EXERCISE} |------")
 SERVER_IP = "localhost"
 SERVER1_PORT = 8081 #cuando el cliente se conecta al servidor el puerto tiene que ser en el que has hecho el bind en el servidor
 SERVER2_PORT = 8082
+
 c1 = Client(SERVER_IP, SERVER1_PORT)
 print(c1)
 c2 = Client(SERVER_IP, SERVER2_PORT)
@@ -21,6 +22,7 @@ s = Seq()
 s.seq_read_fasta(f"{GENE}.txt")
 
 print(f"Gene {GENE}: {s}")
+
 c1.debug_talk(f"Sending {GENE} to the server, in fragments of {BASES} bases")
 c2.debug_talk(f"Sending {GENE} to the server, in fragments of {BASES} bases")
 
