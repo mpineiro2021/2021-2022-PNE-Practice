@@ -1,6 +1,6 @@
 import socket
 
-PORT = 2000
+PORT = 8081
 IP = "localhost"
 MAX_OPEN_REQUESTS = 5
 
