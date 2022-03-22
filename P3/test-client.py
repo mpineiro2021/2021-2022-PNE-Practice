@@ -1,0 +1,5 @@
+from
+SERVER_IP = "localhost"
+SERVER_PORT = 8080
+MESSAGES = 5
+c = Client(SERVER_IP, SERVER_PORT)
