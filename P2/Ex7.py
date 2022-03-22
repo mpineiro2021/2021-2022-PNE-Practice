@@ -21,7 +21,6 @@ s = Seq()
 s.seq_read_fasta(f"{GENE}.txt")
 
 print(f"Gene {GENE}: {s}")
-
 c1.debug_talk(f"Sending {GENE} to the server, in fragments of {BASES} bases")
 c2.debug_talk(f"Sending {GENE} to the server, in fragments of {BASES} bases")
 
