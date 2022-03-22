@@ -1,3 +1,7 @@
+
+BASES = ["A","C","T","G"]
+COMPLEMENTS = {"A": "T", "C": "G", "G": "C", "T": "A"}
+
 def seq_ping():
     print("Ok")
 def valid_filename():
@@ -36,40 +40,29 @@ def seq_count_base(seq, base):
             total += 1
     return total'''
 
-def seq_count():
-    FOLDER = "./sequences/"
-    list_genes = ["U5", "FRAT1", "ADA","FXN","RNU6_269P"]
-    dict_list = []
-    for l in list_genes:
-        d = {"A": 0, "C": 0, "G": 0, "T": 0}
-        for keys in d.keys():
-            d[keys] = (seq_read_fasta(FOLDER + l + ".txt")).count(keys)
-        dict_list.append(d)
-    return dict_list,list_genes
+def seq_count(seq):
+    d = {}
+    for base in BASES:
+        d[base] = seq_count_base(seq,base)
+    return d
 
-def seq_reverse():
-    FOLDER = "./sequences/"
-    frag = (seq_read_fasta(FOLDER +"U5.txt"))
-    rev = (seq_read_fasta(FOLDER + "U5.txt"))[::-1]
-    return frag[:20],rev[:20]
+def seq_reverse(seq):
+    return seq[::-1]
 
-def seq_complement():
-    d = {"A": "T", "C": "G", "G": "C", "T": "A"}
-    FOLDER = "./sequences/"
-    sequence = (seq_read_fasta(FOLDER +"U5.txt"))[:20]
-    bases = list(sequence)
-    bases = [d[base] for base in bases]
-    return sequence, ''.join(bases)
+def seq_complement(seq):
+    d = ""
+    for base in seq:
+        d += COMPLEMENTS[base]
+    return d
 
-def max_V(dict_list):
-    value_list= []
-    i = 0
-    while i < len(dict_list):
-        for d in dict_list[i]:
-            max_key = max(d, key=d.get)
-        value_list.append(max_key)
-        i += 1
-    return value_list
+def most_frequent_base(seq):
+    max_base = None
+    max_count = 0
+    for base, count in seq_count(seq).items(): # para recorrer las claves y valores del diccionario que cuenta las bases
+        if count >= max_count: # por si la primera base es = 0, así max_base tiene valor
+            max_base = base
+            max_count = count
+    return max_base
 
 
 
