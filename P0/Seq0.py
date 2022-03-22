@@ -15,34 +15,26 @@ def valid_filename():
             print("File doesn't exist")
 
 def seq_read_fasta(filename):
+    from pathlib import Path
+    file_contents = Path(filename).read_text()
+    lines = file_contents.splitlines()
+    body = lines[1:]
+    sequence = ""
+    for line in body:
+        sequence += line
+    return sequence
 
-    seq = open(filename, "r").read()
-    seq = seq[seq.find("\n"):].replace("\n","")
-    return seq
 
-def seq_len():
 
-    FOLDER = "./sequences/"
-    list_genes = ["U5", "FRAT1", "ADA","FXN","RNU6_269P"]
-    list_number = []
-    for l in list_genes:
-        list_number.append(len(seq_read_fasta(FOLDER+l+".txt")))
+def seq_len(seq):
+    return len(seq)
 
-    return list_genes,list_number
-
-def seq_count_base():
-    FOLDER = "./sequences/"
-    list_genes = ["U5", "FRAT1", "ADA","FXN","RNU6_269P"]
-    list_a = []
-    list_c = []
-    list_g = []
-    list_t = []
-    for l in list_genes:
-        list_a.append((seq_read_fasta(FOLDER + l + ".txt")).count("A"))
-        list_c.append((seq_read_fasta(FOLDER + l + ".txt")).count("C"))
-        list_g.append((seq_read_fasta(FOLDER + l + ".txt")).count("G"))
-        list_t.append((seq_read_fasta(FOLDER + l + ".txt")).count("T"))
-    return list_a, list_c, list_g, list_t, list_genes
+def seq_count_base(seq, base):
+    return seq.count(base)
+    '''for b in seq:
+        if b == base:
+            total += 1
+    return total'''
 
 def seq_count():
     FOLDER = "./sequences/"

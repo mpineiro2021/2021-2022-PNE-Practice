@@ -1,22 +1,12 @@
-import Seq0
-list_a, list_c, list_g, list_t,list_genes= Seq0.seq_count_base()
-print("Gene",list_genes[0]+":")
-print("A:",list_a[0])
-print("C:",list_c[0])
-print("G:",list_g[0])
-print("T:",list_t[0])
-print("Gene",list_genes[1]+":")
-print("A:",list_a[1])
-print("C:",list_c[1])
-print("G:",list_g[1])
-print("T:",list_t[1])
-print("Gene",list_genes[2]+":")
-print("A:",list_a[2])
-print("C:",list_c[2])
-print("G:",list_g[2])
-print("T:",list_t[2])
-print("Gene",list_genes[3]+":")
-print("A:",list_a[3])
-print("C:",list_c[3])
-print("G:",list_g[3])
-print("T:",list_t[3])
+from Seq0 import *
+
+FOLDER = "./sequences/"
+GENES = ["U5", "FRAT1", "ADA","FXN","RNU6_269P"]
+BASES = ["A","C","G","T"]
+for gene in GENES:
+    filename = gene + ".txt"
+    sequence = seq_read_fasta(FOLDER + filename)
+    print(f"Gene {gene}:")
+    for base in BASES:
+        print(f"{base}: {seq_count_base(sequence)}")
+
