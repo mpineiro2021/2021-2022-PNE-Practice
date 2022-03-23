@@ -9,8 +9,8 @@ BASES = 10
 print(f"-----| Practice {PRACTICE}, Exercise {EXERCISE} |------")
 
 SERVER_IP = "localhost"
-SERVER1_PORT = 8080 #cuando el cliente se conecta al servidor el puerto tiene que ser en el que has hecho el bind en el servidor
-SERVER2_PORT = 8081
+SERVER1_PORT = 8084 #cuando el cliente se conecta al servidor el puerto tiene que ser en el que has hecho el bind en el servidor
+SERVER2_PORT = 8085
 
 c1 = Client(SERVER_IP, SERVER1_PORT)
 print(c1)
