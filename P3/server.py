@@ -42,7 +42,7 @@ while True:
     try:
         slices = msg.split(" ")
         command = slices[0]
-        termcolor.cprint(f"{command}, 'green'")
+        termcolor.cprint(f"{command}", 'green')
         response = ""
 
         if command == "PING":
@@ -60,7 +60,7 @@ while True:
         elif command == "INFO":
             bases = slices[1]
             sequence = Seq(bases)
-            response = f"{sequence.info()\n}"
+            response = f"{sequence.info()}\n"
         elif command == "COMP":
             bases = slices[1]
             sequence = Seq(bases)
