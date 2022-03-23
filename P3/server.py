@@ -77,6 +77,11 @@ try:
                 filename = f"{gene}.txt"
                 sequence.seq_read_fasta(filename)
                 response = f"{sequence}\n"
+            elif command == "MULT":
+                bases = slices[1]
+                sequence = Seq(bases)
+                response = f"{sequence.multiply()}\n"
+
 
             else:
             # -- Send a response message to the client

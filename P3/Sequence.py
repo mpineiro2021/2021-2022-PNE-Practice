@@ -1,6 +1,7 @@
 class Seq:
     BASES_ALLOWED = ["A", "C", "G", "T"]
     COMPLEMENTS = {"A": "T", "C": "G", "G": "C", "T": "A"}
+    NUMBERS = COMPLEMENTS = {"A": 2, "C": -1, "G": 3, "T": 5}
     @staticmethod
     def validate_sequence(bases):
         valid = len(bases) != 0
@@ -74,6 +75,17 @@ class Seq:
         for base, count in self.count().items():
             result += f"{base}: {count} ({((count*100) / self.len()):.1f}%)"
         return result
+
+    def multiply(self):
+        if self.bases == "NULL" or self.bases == "ERROR":
+            return f"We could not multiply the bases since the sequence is not correct."
+        numb = 1
+        for base in self.bases:
+            numb = numb * Seq.NUMBERS[base]
+        return numb
+
+
+
 
 
 
